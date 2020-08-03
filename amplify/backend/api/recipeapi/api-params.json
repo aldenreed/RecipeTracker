@@ -1,0 +1,70 @@
+{
+    "paths": [
+        {
+            "name": "/recipes",
+            "lambdaFunction": "recipes",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/ingredients",
+            "lambdaFunction": "ingredients",
+            "privacy": {
+                "open": true
+            }
+        },
+        {
+            "name": "/recipeIngredients",
+            "lambdaFunction": "recipeIngredients",
+            "privacy": {
+                "open": true
+            }
+        }
+    ],
+    "resourceName": "recipeapi",
+    "apiName": "recipeapi",
+    "functionArns": [
+        {
+            "lambdaFunction": "recipes"
+        },
+        {
+            "lambdaFunction": "ingredients"
+        },
+        {
+            "lambdaFunction": "recipeIngredients"
+        }
+    ],
+    "privacy": {
+        "auth": 0,
+        "unauth": 0,
+        "authRoleName": "amplify-recipetracker-dev-143850-authRole",
+        "unAuthRoleName": "amplify-recipetracker-dev-143850-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "recipes",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "ingredients",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        },
+        {
+            "category": "function",
+            "resourceName": "recipeIngredients",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+{
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-recipetracker-dev-143850-authRole",
+            "UnauthRoleArn": "arn:aws:iam::063401889755:role/amplify-recipetracker-dev-143850-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::063401889755:role/amplify-recipetracker-dev-143850-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-recipetracker-dev-143850-deployment",
+            "UnauthRoleName": "amplify-recipetracker-dev-143850-unauthRole",
+            "StackName": "amplify-recipetracker-dev-143850",
+            "StackId": "arn:aws:cloudformation:us-east-2:063401889755:stack/amplify-recipetracker-dev-143850/e9ecb0d0-d293-11ea-b7d7-0637938c6fca",
+            "AmplifyAppId": "d3v55lp5obpp7v"
+        }
+    }
+}

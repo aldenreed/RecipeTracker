@@ -1,0 +1,60 @@
+{
+	"function": {
+		"recipes": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
+		},
+		"ingredients": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
+		},
+		"recipeIngredients": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
+		},
+		"createNewIngredient": {
+			"build": true,
+			"providerPlugin": "awscloudformation",
+			"service": "Lambda",
+			"dependsOn": []
+		}
+	},
+	"api": {
+		"recipeapi": {
+			"service": "API Gateway",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "recipes",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				},
+				{
+					"category": "function",
+					"resourceName": "ingredients",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				},
+				{
+					"category": "function",
+					"resourceName": "recipeIngredients",
+					"attributes": [
+						"Name",
+						"Arn"
+					]
+				}
+			]
+		}
+	}
+}
