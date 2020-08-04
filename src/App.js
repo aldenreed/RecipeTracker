@@ -7,11 +7,10 @@ import './App.css';
 const initialFormState = { name: '', price: '' }
 function App() {
 
-  const [ingredients, setIngredients] = useState([]);
   const [formData, setFormData] = useState(initialFormState);
 
-  async function createIngredient() {
-    if(!formData.name || !formData.price) return null;
+  async function createTimeEntry() {
+    if(!formData.date || !formData.time || !formData.percentWorked) return null;
     const axios = require('axios');
     const headers = {
       'Content-Type': 'application/json',
@@ -19,10 +18,11 @@ function App() {
       'Access-Control-Allow-Origin': '*'
     };
     const data = {
-      'name': formData.name,
-      'price': formData.price
+      'date': formData.date,
+      'time': formData.time,
+      'percentWorked': formData.percentWorked
     };
-    axios.post('https://cors-anywhere.herokuapp.com/https://a1v5ympyjl.execute-api.us-east-2.amazonaws.com/test/ingredient', data, {
+    axios.post('https://cors-anywhere.herokuapp.com/https://74929qlwh3.execute-api.us-east-2.amazonaws.com/test/entry', data, {
       headers: headers
     })
     .then((res) => {
@@ -32,41 +32,35 @@ function App() {
     .catch((error) => {
       console.error(error)
     })
-    /*var mysql = require('mysql');
-    console.log(mysql);
-  var connection = mysql.createConnection({
-        host     : 'recipetracker.c3dpc2qyrg2n.us-east-2.rds.amazonaws.com',
-        user     : 'admin',
-        password : 'password',
-        database : 'recipetracker'
-  });
-  connection.connect(function(err){
-        if(!err) {
-              console.log("Database is connected ... nn");
-        }
-        else {
-              console.log("Error connecting database ... nn");
-        }
-  });
-
-  connection.query("INSERT INTO ingredients (name,price) VALUES ('" + formData.name + "', " + formData.price + ")");
-  connection.end();*/
   }
 
   return (
     <div className="App">
       <header className="App-header">
       <input
-        onChange={e => setFormData({ ...formData, 'name': e.target.value})}
-        placeholder="Ingredient name"
-        value={formData.name}
+        onChange={e => setFormData({ ...formData, 'date': e.target.value})}
+        placeholder="Date"
+        value={formData.date}
       />
       <input
-        onChange={e => setFormData({ ...formData, 'price': e.target.value})}
-        placeholder="Ingredient Price"
-        value={formData.price}
+        onChange={e => setFormData({ ...formData, 'time': e.target.value})}
+        placeholder="Time"
+        value={formData.time}
       />
-      <button onClick={createIngredient}>Create Ingredient</button>
+      <input
+        onChange={e => setFormData({ ...formData, 'percentWorked': e.target.value})}
+        placeholder="Percent Worked"
+        value={formData.percentWorked}
+      />
+      <button onClick={createTimeEntry}>Create Time Entry</button>
+      <table id="tableData" class="table table-fixed">
+        <thead>
+          <tr>
+          </tr>
+        </thead>
+        <tbody class="tbody" >
+        </tbody>
+      </table>
       </header>
     </div>
   );
