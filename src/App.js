@@ -34,6 +34,30 @@ function App() {
     })
   }
 
+  async function getTimeEntries() {
+    if(!formData.date) return null;
+    const axios = require('axios');
+    const headers = {
+      'Content-Type': 'application/json',
+      'Authorization': 'AWS4-HMAC-SHA256 Credential=AKIAQ5QYMB7NZZPS7XEF/20200803/us-east-2/execute-api/aws4_request, SignedHeaders=host;x-amz-content-sha256;x-amz-date, Signature=977d4a0e6f8ab1f6929ce21cc0a0b772f441839f50437333fed9a0072cc05b4e',
+      'Access-Control-Allow-Origin': '*'
+    };
+    const data = {
+      'date': formData.date
+    };
+    axios.get('https://cors-anywhere.herokuapp.com/https://74929qlwh3.execute-api.us-east-2.amazonaws.com/test/entry', data, {
+      headers: headers
+    })
+    .then((res) => {
+      console.log(`statusCode: ${res.statusCode}`)
+      console.log(res)
+      console.log(res.data)
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -53,6 +77,7 @@ function App() {
         value={formData.percentWorked}
       />
       <button onClick={createTimeEntry}>Create Time Entry</button>
+      <button onClick={getTimeEntries}>Get Time Entries</button>
       <table id="tableData" class="table table-fixed">
         <thead>
           <tr>
